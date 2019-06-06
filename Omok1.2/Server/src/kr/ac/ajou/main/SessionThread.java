@@ -1,6 +1,7 @@
 package kr.ac.ajou.main;
 
 import com.google.gson.Gson;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import kr.ac.ajou.protocol.*;
 import kr.ac.ajou.strategy.ServerOmokPlate;
 
@@ -14,30 +15,40 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class SessionThread extends Thread {
     private static final int MAX_SIZE = 1024;
-    private static final int READY_ON = 1;
-    private static final int READY_OFF = -1;
-    boolean myTurn;
+    private static final int CLIENT_ON = 1;
+    private static final int CLIENT_OFF = -1;
+
+    private boolean myTurn;
     Queue<Boolean> myTurnQueue = new ConcurrentLinkedQueue<>();
+
+    private int clientNum;
+
     private Socket socket;
     private List<Socket> socketList;
     private List<SessionThread> sessionThreadList;
     private ServerOmokPlate omokPlate;
     private CheckThread checkThread;
-    private int clientNum;
+
 
     SessionThread(Socket socket, List<Socket> socketList, List<SessionThread> sessionThreadList, CheckThread checkThread) {
         this.socket = socket;
+
         this.socketList = socketList;
         socketList.add(socket);
+
         this.sessionThreadList = sessionThreadList;
         sessionThreadList.add(this);
+
         this.checkThread = checkThread;
 
         omokPlate = new ServerOmokPlate();
 
+        checkThread.countQueue.add(CLIENT_ON);
+
         clientNum = CheckThread.clientConnected();
         System.out.println("clientNum: " + clientNum);
         System.out.println("clientCount: " + CheckThread.getClientCount());
+
         sendClientNum(); // send clientNum to the Client
 
     }
@@ -49,6 +60,8 @@ public class SessionThread extends Thread {
 
             byte[] buf = new byte[MAX_SIZE];
             while (true) {
+
+
                 int len;
                 try {
                     len = dis.readInt();
@@ -57,6 +70,8 @@ public class SessionThread extends Thread {
                     sendExit();
                     socketList.remove(socket);
                     sessionThreadList.remove(this);
+                    System.out.println("sessionThreadList's size:"+ sessionThreadList.size());
+
                     CheckThread.clientDisconnected();
                     System.out.println("clientCount: " + CheckThread.getClientCount());
                     break;
@@ -78,11 +93,11 @@ public class SessionThread extends Thread {
                         break;
                     case ConstantProtocol.STONE_LOCATION:
 
-                        if(!myTurnQueue.isEmpty()){
+                        if (!myTurnQueue.isEmpty()) {
                             myTurn = myTurnQueue.poll();
                         }
 
-                        if(myTurn) {
+                        if (myTurn) {
                             Location location = gson.fromJson(data, Location.class);
                             int row = location.getRow();
                             int col = location.getCol();
@@ -120,6 +135,7 @@ public class SessionThread extends Thread {
 
             socketList.remove(socket);
             sessionThreadList.remove(this);
+
             CheckThread.clientDisconnected();
             System.out.println("clientCount: " + CheckThread.getClientCount());
 
@@ -230,9 +246,6 @@ public class SessionThread extends Thread {
         }
     }
 
-    public int getClientNum() {
-        return clientNum;
-    }
 
     private void sendToOtherTurn() {
 
