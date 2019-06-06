@@ -12,7 +12,7 @@ public class Server {
     public static void main(String[] args) {
         try {
             ServerSocket serverSocket = new ServerSocket();
-            serverSocket.bind(new InetSocketAddress("127.0.0.1", 5000));
+            serverSocket.bind(new InetSocketAddress("127.0.0.1", 5500));
             List<Socket> socketList = new ArrayList<>();
             List<SessionThread> sessionThreadList = new ArrayList<>();
             CheckThread checkThread = new CheckThread(socketList, sessionThreadList);

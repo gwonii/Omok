@@ -77,27 +77,36 @@ public class SessionThread extends Thread {
                         checkThread.protocolQueue.add(protocol);
                         break;
                     case ConstantProtocol.STONE_LOCATION:
-                        Location location = gson.fromJson(data, Location.class);
-                        int row = location.getRow();
-                        int col = location.getCol();
-                        int stoneColor = location.getColor();
 
-                        omokPlate.putStone(row, col, stoneColor);
+                        if(!myTurnQueue.isEmpty()){
+                            myTurn = myTurnQueue.poll();
+                        }
 
-                        if (omokPlate.winCheck(row, col)) {
-                            broadcast(data, type);
-                            sendWinInfo();
-                            Thread.sleep(100);
+                        if(myTurn) {
+                            Location location = gson.fromJson(data, Location.class);
+                            int row = location.getRow();
+                            int col = location.getCol();
+                            int stoneColor = location.getColor();
 
-                            GameState gameState = new GameState(GameState.GAME_OVER);
-                            String gameStateData = gson.toJson(gameState);
-                            String gameStateType = ConstantProtocol.GAME_STATE;
-                            protocol = new Protocol(gameStateData, gameStateType);
+                            omokPlate.putStone(row, col, stoneColor);
 
-                            checkThread.protocolQueue.add(protocol);
+                            if (omokPlate.winCheck(row, col)) {
+                                broadcast(data, type);
+                                sendWinInfo();
+                                Thread.sleep(100);
 
-                        } else {
-                            broadcast(data, type);
+                                GameState gameState = new GameState(GameState.GAME_OVER);
+                                String gameStateData = gson.toJson(gameState);
+                                String gameStateType = ConstantProtocol.GAME_STATE;
+                                protocol = new Protocol(gameStateData, gameStateType);
+
+                                checkThread.protocolQueue.add(protocol);
+
+                            } else {
+                                broadcast(data, type);
+                            }
+                            myTurn = false;
+                            sendToOtherTurn();
                         }
                         break;
                     case ConstantProtocol.INIT_STONE:
@@ -223,5 +232,15 @@ public class SessionThread extends Thread {
 
     public int getClientNum() {
         return clientNum;
+    }
+
+    private void sendToOtherTurn() {
+
+        for (SessionThread sessionThread : sessionThreadList) {
+            if (sessionThread != this) {
+                sessionThread.myTurnQueue.add(true);
+            }
+        }
+
     }
 }
