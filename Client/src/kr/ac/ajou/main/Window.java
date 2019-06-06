@@ -406,7 +406,7 @@ public class Window extends PApplet {
         try {
 
             socket = new Socket();
-            socket.connect(new InetSocketAddress("127.0.0.1", 5000));
+            socket.connect(new InetSocketAddress("127.0.0.1", 5500));
             System.out.println("[서버 연결 성공]");
             ReceiveThread receiveThread = new ReceiveThread(socket, this);
             receiveThread.start();
