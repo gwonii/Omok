@@ -1,23 +1,27 @@
-# Network Omok
+# README
+
+
+
+## Network Omok
 
 * TCP/IP 통신을 이용하여 사용자 간에 오목게임을 가능하게 하는 소프트웨어
 
-# Development Environment
+## Development Environment
 
 * java jdk 1.8
 * processing API 3.5.3
 
-# Characteristic
+## Characteristic
 
 #### 1. 기존의 오목을 Processing을 통해 구현하였다. 
 
 * 앱, 웹이외에 에 쉽게 이식할 수 있도록 processing을 통해 표준 코드를 작성하였다. 
 
-# Distribution
+## Distribution
 
 * 안드로이드 앱으로 출시 예정
 
-# Structure and UI/UX
+## Structure and UI/UX
 
 * 기획서 PPT 참조 
 
