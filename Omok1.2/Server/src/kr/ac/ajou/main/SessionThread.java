@@ -42,7 +42,10 @@ public class SessionThread extends Thread {
 
         omokPlate = new ServerOmokPlate();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> kimdo
         clientNum = CheckThread.clientConnected();
         System.out.println("clientNum: " + clientNum);
         System.out.println("clientCount: " + CheckThread.getClientCount());

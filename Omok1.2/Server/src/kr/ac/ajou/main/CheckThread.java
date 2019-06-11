@@ -30,6 +30,10 @@ public class CheckThread extends Thread {
     private List<Socket> socketList;
     //queue
     Queue<Protocol> protocolQueue = new ConcurrentLinkedQueue<>();
+<<<<<<< HEAD
+=======
+
+>>>>>>> kimdo
 
     CheckThread(List<Socket> socketList, List<SessionThread> sessionThreadList) {
         gameState = new GameState(GameState.WAITING);

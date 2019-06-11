@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12d28f2a-dabc-48b4-82f9-10e8b5a2e758" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/../Omok2.0/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/dir/core.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/dir/gson.jar" afterDir="false" />
@@ -31,6 +32,10 @@
       <change beforePath="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/ReceiveThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/ReceiveThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/kr/ac/ajou/view/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/kr/ac/ajou/view/Button.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/kr/ac/ajou/main/CheckThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/kr/ac/ajou/main/CheckThread.java" afterDir="false" />
+>>>>>>> kimdo
       <change beforePath="$PROJECT_DIR$/Server/src/kr/ac/ajou/main/SessionThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/kr/ac/ajou/main/SessionThread.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -45,6 +50,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/main/SessionThread.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -116,6 +122,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-10812">
+              <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+>>>>>>> kimdo
             </state>
           </provider>
         </entry>
@@ -149,11 +162,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Server/src/kr/ac/ajou/main/ClientCount.java" />
+        <option value="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/ReceiveThread.java" />
+        <option value="$PROJECT_DIR$/Client/src/kr/ac/ajou/view/Button.java" />
         <option value="$PROJECT_DIR$/Server/src/kr/ac/ajou/main/CheckThread.java" />
         <option value="$PROJECT_DIR$/Server/src/kr/ac/ajou/main/SessionThread.java" />
         <option value="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/ReceiveThread.java" />
         <option value="$PROJECT_DIR$/Client/src/kr/ac/ajou/view/Button.java" />
+=======
+>>>>>>> kimdo
       </list>
     </option>
   </component>
@@ -176,6 +194,10 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> kimdo
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -267,7 +289,10 @@
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+>>>>>>> kimdo
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -355,8 +380,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16342412" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16564758" />
+>>>>>>> kimdo
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -477,6 +507,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/main/CheckThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -494,6 +525,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> kimdo
     <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/view/GameResult.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
@@ -535,15 +568,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/main/SessionThread.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="7038">
           <caret line="216" column="25" selection-start-line="216" selection-start-column="25" selection-end-line="216" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="68">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+>>>>>>> kimdo
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/main/Server.java">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
@@ -568,11 +607,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-534">
           <caret line="54" column="58" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java">
+    <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/strategy/ServerOmokPlate.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="54" column="58" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/view/Button.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/main/CheckThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+>>>>>>> kimdo
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/다운로드/jdk1.8.0_211/src.zip!/java/lang/Override.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-5780">
           <caret line="166" column="39" selection-start-line="166" selection-start-column="39" selection-end-line="166" selection-end-column="39" />
         </state>
@@ -589,6 +658,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="32" selection-start-line="32" selection-end-line="32" />
+=======
+        <state relative-caret-position="470">
+          <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/test/WindowExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/main/ConstantWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/main/ReceiveThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="775">
+          <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10812">
+          <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+>>>>>>> kimdo
         </state>
       </provider>
     </entry>
