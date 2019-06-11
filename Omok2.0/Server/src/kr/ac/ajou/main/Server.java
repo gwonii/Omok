@@ -1,4 +1,4 @@
-package ac.kr.ajou.main;
+package kr.ac.ajou.main;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

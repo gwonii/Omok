@@ -10,18 +10,18 @@
     <orderEntry type="library" name="groovy-2.4.16" level="application" />
     <orderEntry type="library" name="KotlinJavaRuntime (2)" level="project" />
     <orderEntry type="module-library">
-      <library name="core">
+      <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/dir/core.jar!/" />
+          <root url="jar://$MODULE_DIR$/dir/gson.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library>
+      <library name="core">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/dir/gson.jar!/" />
+          <root url="jar://$MODULE_DIR$/dir/core.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

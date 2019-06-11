@@ -1,4 +1,4 @@
-package ac.kr.ajou.main;
+package kr.ac.ajou.main;
 
 import ac.kr.ajou.protocol.ConstantProtocol;
 import ac.kr.ajou.protocol.IdData;

@@ -1,4 +1,4 @@
-package ac.kr.ajou.protocol;
+package kr.ac.ajou.protocol;
 
 public class Protocol {
 
