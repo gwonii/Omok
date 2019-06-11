@@ -35,6 +35,8 @@ public class ReceiveThread extends Thread {
                 try {
                     len = dis.readInt();
                 } catch (EOFException e) {
+                    System.out.println("[서버가 비정상 종료되었습니다.]");
+                    window.exit();
                     break;
                 }
                 int ret = is.read(buf, 0, len);

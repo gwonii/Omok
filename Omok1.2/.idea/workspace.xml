@@ -2,9 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12d28f2a-dabc-48b4-82f9-10e8b5a2e758" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/dir/core.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/dir/gson-2.8.5.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/dir/gson.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/main/ConstantWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/main/RecieveThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/main/Window.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/protocol/ConstantProtocol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/protocol/IdData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/protocol/MainState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/protocol/Protocol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/test/WindowExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/view/Button.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/view/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/view/Displayable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/view/LoginBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/view/LoginButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Client/src/kr/ac/ajou/view/RoomBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Server/dir/gson.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Server/src/ac/kr/ajou/main/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Server/src/ac/kr/ajou/main/SessionThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Server/src/ac/kr/ajou/protocol/ConstantProtocol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Server/src/ac/kr/ajou/protocol/IdData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Server/src/ac/kr/ajou/protocol/MainState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Omok2.0/Server/src/ac/kr/ajou/protocol/Protocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/ReceiveThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/ReceiveThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/kr/ac/ajou/view/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/kr/ac/ajou/view/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/kr/ac/ajou/main/SessionThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/kr/ac/ajou/main/SessionThread.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,22 +46,76 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/main/SessionThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7038">
+              <caret line="216" column="25" selection-start-line="216" selection-start-column="25" selection-end-line="216" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/main/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+            <state relative-caret-position="136">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/strategy/ServerOmokPlate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-534">
+              <caret line="54" column="58" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-5780">
+              <caret line="166" column="39" selection-start-line="166" selection-start-column="39" selection-end-line="166" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/view/Button.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/다운로드/jdk1.8.0_211/src.zip!/java/lang/Override.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="470">
+              <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/main/ReceiveThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="782">
+              <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/test/WindowExample.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="68">
+              <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -56,6 +137,9 @@
       <find>GAME_OVER</find>
       <find>gameOverCheck</find>
       <find>clientCount</find>
+      <find>gameState</find>
+      <find>sendToOther</find>
+      <find>send</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -67,14 +151,23 @@
         <option value="$PROJECT_DIR$/Server/src/kr/ac/ajou/main/ClientCount.java" />
         <option value="$PROJECT_DIR$/Server/src/kr/ac/ajou/main/CheckThread.java" />
         <option value="$PROJECT_DIR$/Server/src/kr/ac/ajou/main/SessionThread.java" />
+        <option value="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java" />
+        <option value="$PROJECT_DIR$/Client/src/kr/ac/ajou/main/ReceiveThread.java" />
+        <option value="$PROJECT_DIR$/Client/src/kr/ac/ajou/view/Button.java" />
       </list>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="460" />
-    <option name="y" value="291" />
-    <option name="width" value="1103" />
-    <option name="height" value="789" />
+    <option name="x" value="67" />
+    <option name="y" value="25" />
+    <option name="width" value="1853" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -82,7 +175,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -99,6 +192,40 @@
               <item name="Omok1.2" type="b2602c69:ProjectViewProjectNode" />
               <item name="Client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Omok1.2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ajou" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Omok1.2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ajou" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Omok1.2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ajou" type="462c0819:PsiDirectoryNode" />
+              <item name="protocol" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Omok1.2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ajou" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Omok1.2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ajou" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Omok1.2" type="b2602c69:ProjectViewProjectNode" />
@@ -122,16 +249,30 @@
               <item name="ajou" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Omok1.2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ajou" type="462c0819:PsiDirectoryNode" />
+              <item name="protocol" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Omok1.2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ajou" type="462c0819:PsiDirectoryNode" />
+              <item name="strategy" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Omok2.0" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Omok-B" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
@@ -215,7 +356,7 @@
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19733185" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16342412" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -224,7 +365,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.042035397" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.04198895" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -232,13 +373,13 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="ConsoleMavenPlugin" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32928178" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.32924694" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
@@ -272,6 +413,11 @@
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
     </layout-to-restore>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/protocol/WinCheck.java">
@@ -310,21 +456,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/protocol/GameState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/protocol/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/protocol/Protocol.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
@@ -345,16 +477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/main/SessionThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="664">
-          <caret line="114" column="28" selection-start-line="114" selection-start-column="28" selection-end-line="114" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/main/CheckThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -365,27 +487,108 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/main/ConstantWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12954">
-          <caret line="408" column="22" selection-start-line="408" selection-start-column="22" selection-end-line="408" selection-end-column="22" />
+        <state relative-caret-position="238">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/view/GameResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/protocol/Protocol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/protocol/GameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+          <folding>
+            <element signature="e#288#289#0" expanded="true" />
+            <element signature="e#330#331#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/protocol/Protocol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/protocol/GameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/main/SessionThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7038">
+          <caret line="216" column="25" selection-start-line="216" selection-start-column="25" selection-end-line="216" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/main/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        <state relative-caret-position="136">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/main/ReceiveThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/test/WindowExample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/kr/ac/ajou/strategy/ServerOmokPlate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-534">
+          <caret line="54" column="58" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/main/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5780">
+          <caret line="166" column="39" selection-start-line="166" selection-start-column="39" selection-end-line="166" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/다운로드/jdk1.8.0_211/src.zip!/java/lang/Override.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/kr/ac/ajou/view/Button.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>

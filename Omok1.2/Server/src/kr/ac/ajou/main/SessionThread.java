@@ -1,7 +1,6 @@
 package kr.ac.ajou.main;
 
 import com.google.gson.Gson;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import kr.ac.ajou.protocol.*;
 import kr.ac.ajou.strategy.ServerOmokPlate;
 
@@ -43,7 +42,6 @@ public class SessionThread extends Thread {
 
         omokPlate = new ServerOmokPlate();
 
-        checkThread.countQueue.add(CLIENT_ON);
 
         clientNum = CheckThread.clientConnected();
         System.out.println("clientNum: " + clientNum);
@@ -60,8 +58,6 @@ public class SessionThread extends Thread {
 
             byte[] buf = new byte[MAX_SIZE];
             while (true) {
-
-
                 int len;
                 try {
                     len = dis.readInt();
@@ -70,7 +66,7 @@ public class SessionThread extends Thread {
                     sendExit();
                     socketList.remove(socket);
                     sessionThreadList.remove(this);
-                    System.out.println("sessionThreadList's size:"+ sessionThreadList.size());
+                    System.out.println("sessionThreadList's size:" + sessionThreadList.size());
 
                     CheckThread.clientDisconnected();
                     System.out.println("clientCount: " + CheckThread.getClientCount());
