@@ -1,7 +1,6 @@
 package kr.ac.ajou.main;
 
 import com.google.gson.Gson;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import kr.ac.ajou.protocol.*;
 import kr.ac.ajou.strategy.ServerOmokPlate;
 
@@ -42,8 +41,6 @@ public class SessionThread extends Thread {
         this.checkThread = checkThread;
 
         omokPlate = new ServerOmokPlate();
-
-        checkThread.countQueue.add(CLIENT_ON);
 
         clientNum = CheckThread.clientConnected();
         System.out.println("clientNum: " + clientNum);

@@ -32,7 +32,6 @@ public class Window extends PApplet {
     private PlayersInfo playersInfo;
 
     private CountDown countDown;
-    private CountDownNum countDownNum;
 
     private GameResult gameResult;
     private float gameResultX;
@@ -57,7 +56,6 @@ public class Window extends PApplet {
     private ClientNum clientNum;
     private GameState gameState;
     private WinCheck winCheck;
-    private Protocol protocol;
 
     //queue
     // TODO : Queue 를 하나로 통일할 것. => 일급객체를 사용할 것.
@@ -164,7 +162,7 @@ public class Window extends PApplet {
         checkMouseCursor();
 
         if (!protocolQueue.isEmpty()) {
-            protocol = protocolQueue.poll();
+            Protocol protocol = protocolQueue.poll();
             String data = protocol.getData();
             String type = protocol.getType();
 
@@ -191,7 +189,7 @@ public class Window extends PApplet {
                     }
                     break;
                 case ConstantProtocol.COUNT_DOWN_NUM:
-                    countDownNum = gson.fromJson(data, CountDownNum.class);
+                    CountDownNum countDownNum = gson.fromJson(data, CountDownNum.class);
                     countDown.setCountDownNum(countDownNum);
                     break;
                 case ConstantProtocol.DICE:
