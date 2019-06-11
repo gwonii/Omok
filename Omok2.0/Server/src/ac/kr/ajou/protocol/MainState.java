@@ -1,4 +1,4 @@
-package kr.ac.ajou.protocol;
+package ac.kr.ajou.protocol;
 
 public enum MainState {
 

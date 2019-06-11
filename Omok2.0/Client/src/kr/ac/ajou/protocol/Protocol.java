@@ -1,11 +1,11 @@
-package ac.kr.ajou.protocol;
+package kr.ac.ajou.protocol;
 
 public class Protocol {
 
     private String data;
     private String type;
 
-    Protocol(String data, String type) {
+    public Protocol(String data, String type) {
         this.data = data;
         this.type = type;
     }

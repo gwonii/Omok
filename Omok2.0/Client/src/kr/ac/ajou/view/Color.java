@@ -2,15 +2,31 @@ package kr.ac.ajou.view;
 
 public enum Color {
 
-    BLACK(0), GREY(128), WHITE(255);
+    BLACK(0, 0, 0),
+    GREY(204, 204, 204),
+    WHITE(255, 255, 255),
+    GREEN(0, 255, 102);
 
-    private int value;
+    private int valueR;
+    private int valueG;
+    private int valueB;
 
-    Color(int value) {
-        this.value = value;
+
+    Color(int valueR, int valueG, int valueB) {
+        this.valueR = valueR;
+        this.valueG = valueG;
+        this.valueB = valueB;
     }
 
-    public int getValue() {
-        return value;
+    public int getValueR() {
+        return valueR;
+    }
+
+    public int getValueG() {
+        return valueG;
+    }
+
+    public int getValueB() {
+        return valueB;
     }
 }
