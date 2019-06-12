@@ -40,7 +40,7 @@ public class RecieveThread extends Thread {
                 }
 
                 int ret = is.read(buf, 0, len);
-                String json = new String(buf, 0, len);
+                String json = new String(buf, 0, ret);
 
                 Gson gson = new Gson();
 

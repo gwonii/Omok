@@ -1,12 +1,9 @@
 package kr.ac.ajou.main;
 
 import com.google.gson.Gson;
-import kr.ac.ajou.protocol.ConstantProtocol;
-import kr.ac.ajou.protocol.IdData;
-import kr.ac.ajou.protocol.MainState;
-import kr.ac.ajou.protocol.Protocol;
+import kr.ac.ajou.protocol.*;
+import kr.ac.ajou.view.LobbyBox;
 import kr.ac.ajou.view.LoginBox;
-import kr.ac.ajou.view.RoomBox;
 import processing.core.PApplet;
 
 import java.io.DataOutputStream;
@@ -14,19 +11,23 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Window extends PApplet {
 
     private LoginBox loginBox;
-    private RoomBox roomBox;
+    private LobbyBox lobbyBox;
     private MainState mainState;
     private Socket socket;
 
     private int mouseValue;
 
     Queue<Protocol> protocolQueue = new ConcurrentLinkedQueue<>();
+
+    private ClientInfo clientInfo;
+    private ClientNum clientNum;
 
 
     @Override
@@ -44,7 +45,7 @@ public class Window extends PApplet {
         loginBox = new LoginBox(ConstantWindow.ORIGIN_X, ConstantWindow.ORIGIN_Y,
                 ConstantWindow.WIDTH, ConstantWindow.HEIGHT);
 
-        roomBox = new RoomBox(ConstantWindow.ORIGIN_X, ConstantWindow.ORIGIN_Y,
+        lobbyBox = new LobbyBox(ConstantWindow.ORIGIN_X, ConstantWindow.ORIGIN_Y,
                 ConstantWindow.WIDTH, ConstantWindow.HEIGHT);
 
     }
@@ -69,6 +70,24 @@ public class Window extends PApplet {
                     mainState = gson.fromJson(data, MainState.class);
                     System.out.println("mainState: " + mainState);
                     break;
+                case ConstantProtocol.ID_FAIL:
+                    IdData idFailData = gson.fromJson(data, IdData.class);
+                    System.out.println(idFailData.getId() + " is already exist. " +
+                            "you have to enter a different ID");
+                    break;
+                case ConstantProtocol.ID_SUCCESS:
+                    initClientInfo();
+
+                    IdData idSuccessData = gson.fromJson(data, IdData.class);
+                    clientInfo.setIdData(idSuccessData);
+
+                    System.out.println("당신의 ID는 " + clientInfo.getIdData().getId() + "입니다.");
+
+                    break;
+
+                case ConstantProtocol.CLIENT_NUM:
+                    clientNum = gson.fromJson(data, ClientNum.class);
+                    System.out.println("clientNum: " + clientNum.getClientNum());
             }
         }
 
@@ -77,12 +96,26 @@ public class Window extends PApplet {
                 loginBox.display(this);
                 break;
             case MainState.LOBBY_VALUE:
-                roomBox.display(this);
+                lobbyBox.display(this);
                 break;
             case MainState.ROOM_VALUE:
                 break;
         }
 
+    }
+
+    private void initClientInfo() {
+        clientInfo = new ClientInfo();
+        checkClientEnterDate();
+    }
+
+    private void checkClientEnterDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 " +
+                "MM월dd일 " +
+                "HH시mm분ss초 ");
+        String formatTime = dateFormat.
+                format(clientInfo.getEnterTime());
+        System.out.println(formatTime);
     }
 
     private void checkMouseCursor() {
