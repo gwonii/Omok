@@ -5,13 +5,14 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 import processing.core.PApplet;
 
-public class Window extends PApplet {
+public class WindowV2 extends PApplet {
 
   private String str = "";
-  private char[] tempChars = new char[100];
+  private StringBuilder stringBuilder = new StringBuilder();
   private Stack<Character> characterStack = new Stack<>();
 
   private StringTokenizer stringTokenizer;
+  private int num = gameState.GAME_OVER;
 
   public void settings() {
     size(500, 100);
@@ -25,33 +26,30 @@ public class Window extends PApplet {
   public void draw() {
     background(255);
 
+
     textSize(30);
     fill(0);
 
-    text(str, 10, 50);
+
+    text(stringBuilder.toString(), 10, 50);
+    text(gameState.SET_ORDER.toString(), 50, 50);
   }
 
   public void keyPressed() {
 
-    if (key == ENTER) {
-      str = "";
+    if (key == BACKSPACE) {
 
-    } else if (key == BACKSPACE) {
-      char[] chars = str.toCharArray();
-      chars[str.length() - 1] = ' ';
-      str = Arrays.toString(chars);
-      stringTokenizer = new StringTokenizer(str, ",|[] ");
-      str = "";
-      while (stringTokenizer.hasMoreTokens()) {
-        str += stringTokenizer.nextToken();
+      if(stringBuilder.length() > 0) {
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
       }
     } else {
-      str += key;
+      stringBuilder.append(key);
     }
 
   }
 
   public static void main(String[] args) {
-    PApplet.main(Window.class);
+    PApplet.main(WindowV2.class);
+
   }
 }
