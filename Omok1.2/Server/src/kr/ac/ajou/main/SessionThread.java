@@ -1,7 +1,9 @@
 package kr.ac.ajou.main;
 
 import com.google.gson.Gson;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import kr.ac.ajou.protocol.*;
 import kr.ac.ajou.strategy.ServerOmokPlate;
 
@@ -14,246 +16,323 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 
 public class SessionThread extends Thread {
-    private static final int MAX_SIZE = 1024;
-    private static final int CLIENT_ON = 1;
-    private static final int CLIENT_OFF = -1;
 
-    private boolean myTurn;
-    Queue<Boolean> myTurnQueue = new ConcurrentLinkedQueue<>();
+  private static final int MAX_SIZE = 1024;
+  private static final int CLIENT_ON = 1;
+  private static final int CLIENT_OFF = -1;
 
-    private int clientNum;
+  private boolean myTurn;
+  Queue<Boolean> myTurnQueue = new ConcurrentLinkedQueue<>();
 
-    private Socket socket;
-    private List<Socket> socketList;
-    private List<SessionThread> sessionThreadList;
-    private ServerOmokPlate omokPlate;
-    private CheckThread checkThread;
+  private String myId;
 
+  private ConcurrentHashMap<String, Integer> userListMap = new ConcurrentHashMap<>();
+  private UserList userList;
 
-    SessionThread(Socket socket, List<Socket> socketList, List<SessionThread> sessionThreadList, CheckThread checkThread) {
-        this.socket = socket;
+  private MainState mainState;
 
-        this.socketList = socketList;
-        socketList.add(socket);
+  private int clientNum;
 
-        this.sessionThreadList = sessionThreadList;
-        sessionThreadList.add(this);
-
-        this.checkThread = checkThread;
-
-        omokPlate = new ServerOmokPlate();
-
-        checkThread.countQueue.add(CLIENT_ON);
-
-        clientNum = CheckThread.clientConnected();
-        System.out.println("clientNum: " + clientNum);
-        System.out.println("clientCount: " + CheckThread.getClientCount());
-
-        sendClientNum(); // send clientNum to the Client
-
-    }
-
-    @Override
-    public void run() {
-        try (InputStream is = socket.getInputStream();
-             DataInputStream dis = new DataInputStream(is)) {
-
-            byte[] buf = new byte[MAX_SIZE];
-            while (true) {
+  private Socket socket;
+  private List<Socket> socketList;
+  private List<SessionThread> sessionThreadList;
+  private ServerOmokPlate omokPlate;
+  private CheckThread checkThread;
 
 
-                int len;
-                try {
-                    len = dis.readInt();
-                } catch (EOFException e) {
-                    System.out.println("[클라이언트가 비정상 종료되었습니다.]");
-                    sendExit();
-                    socketList.remove(socket);
-                    sessionThreadList.remove(this);
-                    System.out.println("sessionThreadList's size:"+ sessionThreadList.size());
+  SessionThread(Socket socket, List<Socket> socketList, List<SessionThread> sessionThreadList,
+      CheckThread checkThread) {
+    this.socket = socket;
 
-                    CheckThread.clientDisconnected();
-                    System.out.println("clientCount: " + CheckThread.getClientCount());
-                    break;
-                }
-                int ret = is.read(buf, 0, len);
-                String json = new String(buf, 0, ret);
+    this.socketList = socketList;
+    socketList.add(socket);
 
-                // 객체로 변환하기
-                Gson gson = new Gson();
-                Protocol protocol = gson.fromJson(json, Protocol.class);
+    this.sessionThreadList = sessionThreadList;
+    sessionThreadList.add(this);
 
-                String data = protocol.getData();
-                String type = protocol.getType();
+    this.checkThread = checkThread;
 
-                switch (type) {
-                    case ConstantProtocol.READY:
-                    case ConstantProtocol.NOT_READY:
-                        checkThread.protocolQueue.add(protocol);
-                        break;
-                    case ConstantProtocol.STONE_LOCATION:
+    omokPlate = new ServerOmokPlate();
 
-                        if (!myTurnQueue.isEmpty()) {
-                            myTurn = myTurnQueue.poll();
-                        }
+//    checkThread.countQueue.add(CLIENT_ON);
 
-                        if (myTurn) {
-                            Location location = gson.fromJson(data, Location.class);
-                            int row = location.getRow();
-                            int col = location.getCol();
-                            int stoneColor = location.getColor();
+    clientNum = CheckThread.clientConnected();
+    System.out.println("clientNum: " + clientNum);
+    System.out.println("clientCount: " + CheckThread.getClientCount());
 
-                            omokPlate.putStone(row, col, stoneColor);
+    sendClientNum(); // send clientNum to the Client
 
-                            if (omokPlate.winCheck(row, col)) {
-                                broadcast(data, type);
-                                sendWinInfo();
-                                Thread.sleep(100);
+    mainState = new MainState(MainState.LOBBY);
 
-                                GameState gameState = new GameState(GameState.GAME_OVER);
-                                String gameStateData = gson.toJson(gameState);
-                                String gameStateType = ConstantProtocol.GAME_STATE;
-                                protocol = new Protocol(gameStateData, gameStateType);
+  }
 
-                                checkThread.protocolQueue.add(protocol);
+  @Override
+  public void run() {
+    try (InputStream is = socket.getInputStream();
+        DataInputStream dis = new DataInputStream(is)) {
 
-                            } else {
-                                broadcast(data, type);
-                            }
-                            myTurn = false;
-                            sendToOtherTurn();
-                        }
-                        break;
-                    case ConstantProtocol.INIT_STONE:
-                        omokPlate.initStones();
-                }
+      byte[] buf = new byte[MAX_SIZE];
+      while (true) {
 
-            }
-        } catch (SocketException e) {
-            System.out.println("[클라이언트가 비정상 종료되었습니다.]");
-            sendExit();
-
-            socketList.remove(socket);
-            sessionThreadList.remove(this);
-
-            CheckThread.clientDisconnected();
-            System.out.println("clientCount: " + CheckThread.getClientCount());
-
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    //Network
-    private void sendWinInfo() {
-        Gson gson = new Gson();
-        WinCheck winCheck = new WinCheck(true);
-
-        String data = gson.toJson(winCheck);
-        String type = ConstantProtocol.WIN;
-
-        sendToClient(data, type);
-    }
-
-
-    private void sendClientNum() {
-
-        Gson gson = new Gson();
-        ClientNum clientNo = new ClientNum(clientNum);
-
-        String data = gson.toJson(clientNo);
-        String type = ConstantProtocol.CLIENT_NUM_MINE;
-
-        sendToClient(data, type);
-
-        type = ConstantProtocol.CLIENT_NUM_OTHER;
-        sendToOther(data, type);
-
-    }
-
-    private void sendExit() {
-
-        String data = "";
-        String type = ConstantProtocol.EXIT;
-
-        sendToOther(data, type);
-
-    }
-
-
-    private void sendToClient(String data, String type) {
+        int len;
         try {
-            OutputStream os = socket.getOutputStream();
-            DataOutputStream dos = new DataOutputStream(os);
+          len = dis.readInt();
+        } catch (EOFException e) {
+          System.out.println("[클라이언트가 비정상 종료되었습니다.]");
 
-            Gson gson = new Gson();
+          sendExit();
+          socketList.remove(socket);
+          sessionThreadList.remove(this);
+          System.out.println("sessionThreadList's size:" + sessionThreadList.size());
 
-            Protocol protocol = new Protocol(data, type);
-            String json = gson.toJson(protocol);
-            int len = json.length();
-
-            dos.writeInt(len);
-            os.write(json.getBytes());
-
-        } catch (IOException e) {
-            e.printStackTrace();
+          CheckThread.clientDisconnected();
+          System.out.println("clientCount: " + CheckThread.getClientCount());
+          break;
         }
-    }
+        int ret = is.read(buf, 0, len);
+        String json = new String(buf, 0, ret);
 
-    private void sendToOther(String data, String type) {
-        for (Socket socket : socketList) {
-            if (socket == this.socket) {
-                continue;
+        // 객체로 변환하기
+        Gson gson = new Gson();
+        Protocol protocol = gson.fromJson(json, Protocol.class);
+
+        String data = protocol.getData();
+        String type = protocol.getType();
+
+
+        switch (type) {
+
+          case ConstantProtocol.LOGIN:
+            checkThread.protocolQueue.add(protocol);
+            MainState mainState = gson.fromJson(data, MainState.class);
+            myId = mainState.getId();
+            setMainStateLobby();
+            sendMainState();
+//            userListMap.put(mainState.getId(),clientNum);
+//            sendToServerUserListMap();
+//            setMainStateLobby();
+//            sendMainState();
+//            if(userListMap != null){
+//              System.out.println("null이 아니라고...");
+//              Set keySet = userListMap.keySet();
+//              System.out.println("userName : " + keySet);
+//            }
+//            sendToClinetUserListMap();
+//            System.out.println("Server : sendMainState check");
+//
+//            System.out.println("TotalUser" + userListMap.size());
+            break;
+
+          case ConstantProtocol.USER_LIST:
+            userList = gson.fromJson(data, UserList.class);
+            sendToClientUserListMap();
+            break;
+
+          case ConstantProtocol.READY:
+          case ConstantProtocol.NOT_READY:
+            checkThread.protocolQueue.add(protocol);
+            break;
+          case ConstantProtocol.STONE_LOCATION:
+
+            if (!myTurnQueue.isEmpty()) {
+              myTurn = myTurnQueue.poll();
             }
 
-            try {
-                OutputStream os = socket.getOutputStream();
-                DataOutputStream dos = new DataOutputStream(os);
+            if (myTurn) {
+              Location location = gson.fromJson(data, Location.class);
+              int row = location.getRow();
+              int col = location.getCol();
+              int stoneColor = location.getColor();
 
-                Gson gson = new Gson();
+              omokPlate.putStone(row, col, stoneColor);
 
-                Protocol protocol = new Protocol(data, type);
-                String json = gson.toJson(protocol);
-                int len = json.length();
+              if (omokPlate.winCheck(row, col)) {
+                broadcast(data, type);
+                sendWinInfo();
+                Thread.sleep(100);
 
-                dos.writeInt(len);
-                os.write(json.getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
+                GameState gameState = new GameState(GameState.GAME_OVER);
+                String gameStateData = gson.toJson(gameState);
+                String gameStateType = ConstantProtocol.GAME_STATE;
+                protocol = new Protocol(gameStateData, gameStateType);
+
+                checkThread.protocolQueue.add(protocol);
+
+              } else {
+                broadcast(data, type);
+              }
+              myTurn = false;
+              sendToOtherTurn();
             }
-        }
-    }
-
-    private void broadcast(String data, String type) {
-        try {
-            for (Socket socket : socketList) {
-                OutputStream os = socket.getOutputStream();
-                DataOutputStream dos = new DataOutputStream(os);
-
-                Gson gson = new Gson();
-
-                Protocol protocol = new Protocol(data, type);
-                String json = gson.toJson(protocol);
-
-                int len = json.length();
-
-                dos.writeInt(len);
-                os.write(json.getBytes());
-
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    private void sendToOtherTurn() {
-
-        for (SessionThread sessionThread : sessionThreadList) {
-            if (sessionThread != this) {
-                sessionThread.myTurnQueue.add(true);
-            }
+            break;
+          case ConstantProtocol.INIT_STONE:
+            omokPlate.initStones();
         }
 
+      }
+    } catch (SocketException e) {
+      System.out.println("[클라이언트가 비정상 종료되었습니다.]");
+      sendExit();
+
+      socketList.remove(socket);
+      sessionThreadList.remove(this);
+
+      CheckThread.clientDisconnected();
+      System.out.println("clientCount: " + CheckThread.getClientCount());
+
+    } catch (IOException | InterruptedException e) {
+      e.printStackTrace();
     }
+  }
+
+  //Network
+  private void sendWinInfo() {
+    Gson gson = new Gson();
+    WinCheck winCheck = new WinCheck(true);
+
+    String data = gson.toJson(winCheck);
+    String type = ConstantProtocol.WIN;
+
+    sendToClient(data, type);
+  }
+
+
+  private void sendClientNum() {
+
+    Gson gson = new Gson();
+    ClientNum clientNo = new ClientNum(clientNum);
+
+    String data = gson.toJson(clientNo);
+    String type = ConstantProtocol.CLIENT_NUM_MINE;
+
+    sendToClient(data, type);
+
+    type = ConstantProtocol.CLIENT_NUM_OTHER;
+    sendToOther(data, type);
+
+  }
+
+
+  private void sendExit() {
+
+    String data = "";
+    String type = ConstantProtocol.EXIT;
+
+    sendToOther(data, type);
+
+  }
+
+
+  private void sendToClient(String data, String type) {
+    try {
+      OutputStream os = socket.getOutputStream();
+      DataOutputStream dos = new DataOutputStream(os);
+
+      Gson gson = new Gson();
+
+      Protocol protocol = new Protocol(data, type);
+      String json = gson.toJson(protocol);
+      int len = json.length();
+
+      dos.writeInt(len);
+      os.write(json.getBytes());
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  private void sendToOther(String data, String type) {
+    for (Socket socket : socketList) {
+      if (socket == this.socket) {
+        continue;
+      }
+
+      try {
+        OutputStream os = socket.getOutputStream();
+        DataOutputStream dos = new DataOutputStream(os);
+
+        Gson gson = new Gson();
+
+        Protocol protocol = new Protocol(data, type);
+        String json = gson.toJson(protocol);
+        int len = json.length();
+
+        dos.writeInt(len);
+        os.write(json.getBytes());
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  private void broadcast(String data, String type) {
+    try {
+      for (Socket socket : socketList) {
+        OutputStream os = socket.getOutputStream();
+        DataOutputStream dos = new DataOutputStream(os);
+
+        Gson gson = new Gson();
+
+        Protocol protocol = new Protocol(data, type);
+        String json = gson.toJson(protocol);
+
+        int len = json.length();
+
+        dos.writeInt(len);
+        os.write(json.getBytes());
+
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+
+  private void sendToOtherTurn() {
+
+    for (SessionThread sessionThread : sessionThreadList) {
+      if (sessionThread != this) {
+        sessionThread.myTurnQueue.add(true);
+      }
+    }
+  }
+
+  private void setMainStateLobby() {
+    mainState = new MainState(MainState.LOBBY);
+    System.out.println("MainState: LOBBY");
+  }
+
+  private void setMainStateRoom() {
+    mainState = new MainState(MainState.ROOM);
+    System.out.println("MainState: ROOM");
+  }
+
+  private void sendMainState() {
+
+    Gson gson = new Gson();
+    String data = gson.toJson(mainState);
+    String type = ConstantProtocol.MAIN_STATE;
+    sendToClient(data, type);
+  }
+
+  private void sendToServerUserListMap() {
+
+    for (SessionThread sessionThread : sessionThreadList) {
+      if (sessionThread != this) {
+        sessionThread.userListMap = this.userListMap;
+      }
+    }
+  }
+
+  private void sendToClientUserListMap() {
+    Gson gson = new Gson();
+    String data = gson.toJson(userList);
+    String type = ConstantProtocol.USER_LIST;
+    broadcast(data, type);
+  }
+
+  private void sendToCheckEixtUser(){
+
+  }
 }

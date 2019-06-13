@@ -2,7 +2,7 @@ package kr.ac.ajou.view;
 
 public enum Color {
 
-    BLACK(0), GREY(128), WHITE(255);
+    BLACK(0),LIGHT_GREY(220), GREY(128), WHITE(255);
 
     private int value;
 

@@ -13,6 +13,7 @@ public class Button implements Displayable {
 
     private String label;
     private int color;
+    private int buttonTextSize;
 
     public Button(float rectX, float rectY, float width, float height) {
         this.rectX = rectX;
@@ -21,6 +22,7 @@ public class Button implements Displayable {
         this.height = height;
         label = "";
         color = Color.WHITE.getValue();
+        buttonTextSize = TEXT_SIZE;
     }
 
     public void setLabel(String label) {
@@ -29,6 +31,10 @@ public class Button implements Displayable {
 
     public void setColor(int color) {
         this.color = color;
+    }
+
+    public void setButtonTextSize(int buttonTextSize) {
+        this.buttonTextSize = buttonTextSize;
     }
 
     public void display(PApplet p) {
@@ -44,7 +50,7 @@ public class Button implements Displayable {
     private void drawText(PApplet p) {
         p.textAlign(p.CENTER, p.CENTER);
         p.fill(Color.WHITE.getValue());
-        p.textSize(TEXT_SIZE);
+        p.textSize(buttonTextSize);
         p.text(label, rectX + (width / 2), rectY + (height / 2));
     }
 
